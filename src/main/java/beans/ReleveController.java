@@ -51,9 +51,12 @@ public class ReleveController implements Serializable {
             listeAnnee = new ArrayList<String>();
             List<Releve> list = getFacade().findAll();
             for(Releve r : list){
-                listeAnnee.add(r.getAnneeUniversitaire());
-                System.out.println("*********************************************************");
-                System.out.println("Annee : " + r.getAnneeUniversitaire());
+                if(!listeAnnee.contains(r.getAnneeUniversitaire())){
+                    listeAnnee.add(r.getAnneeUniversitaire());
+                    System.out.println("*********************************************************");
+                    System.out.println("Annee : " + r.getAnneeUniversitaire());
+                }
+                
             }
         }
         return listeAnnee;

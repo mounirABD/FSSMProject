@@ -41,7 +41,7 @@
                                            itemValue="#{idReleverItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{dossierprovisoirController.create}" value="#{bundle.Save}" update="display,:DossierprovisoirListForm:datalist,:growl" oncomplete="handleSubmit(args,'DossierprovisoirCreateDialog');"/>
+                    <p:commandButton actionListener="#{dossierprovisoirController.create}" value="#{bundle.Save}" update="display,:form1,:growl" oncomplete="handleSubmit(args,'DossierprovisoirCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DossierprovisoirCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
