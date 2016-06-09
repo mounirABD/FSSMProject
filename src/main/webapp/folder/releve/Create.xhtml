@@ -22,7 +22,8 @@
                         <p:selectOneMenu id="idFiliere" value="#{releveController.selected.idFiliere}" required="true" requiredMessage="#{bundle.EditReleveRequiredMessage_idFiliere}">
                             <f:selectItems value="#{filiereController.itemsAvailableSelectOne}"
                                            var="idFiliereItem"
-                                           itemValue="#{idFiliereItem}"/>
+                                           itemValue="#{idFiliereItem.idFiliere}"
+                                           itemLabel="#{idFiliereItem.intitule}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{releveController.create}" value="#{bundle.Save}" update="display,:form1,:growl" oncomplete="handleSubmit(args,'ReleveCreateDialog');"/>
