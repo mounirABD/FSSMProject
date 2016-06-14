@@ -1,9 +1,9 @@
 package beans;
 
 import model.Dossierhsupp;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DossierhsuppFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DossierhsuppFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DossierhsuppController implements Serializable {
 
     @EJB
-    private session.DossierhsuppFacade ejbFacade;
+    private sessions.DossierhsuppFacade ejbFacade;
     private List<Dossierhsupp> items = null;
     private Dossierhsupp selected;
 

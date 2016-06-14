@@ -9,7 +9,7 @@
     <body>
         <h:outputScript name="jsf.js" library="javax.faces" target="head"/>
         <ui:composition template="./templateUnite.xhtml">
-
+            <ui:param name="activeClass4" value="menu-top-active" />
             <ui:define name="title">
                 FSSM gestion relever
             </ui:define>
@@ -27,17 +27,19 @@
                                     Liste des relever semestriele
                                 </div>
                                 <div class="panel-body">
-
-                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{releveController.prepareCreate}" update=":ReleveCreateForm" oncomplete="PF('ReleveCreateDialog').show()"/>
-
-                                    <h:selectOneMenu value="#{releveController.annee}" styleClass="form-control" style="width:200px">
-                                        <f:selectItems value="#{releveController.listeAnnee}" var="a" itemLabel="#{a}" itemValue="#{a}" />
-                                        <f:ajax event="change" listener="#{releveController.updateSemestre}" render=":form1" execute="@form" />
-                                    </h:selectOneMenu>
-
+                                    <p:panelGrid id="sovemavie" columns="3">
+                                        <p:outputLabel value="Filtrer par année" />
+                                        <h:selectOneMenu value="#{releveController.annee}" styleClass="form-control" style="width:200px" >
+                                            <f:selectItems value="#{releveController.listeAnnee}" var="a" itemLabel="#{a}" itemValue="#{a}" />
+                                            <f:ajax event="change" listener="#{releveController.updateSemestre}" render=":form1" execute="@form" />
+                                        </h:selectOneMenu>
+                                        
+                                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{releveController.prepareCreate}" update=":ReleveCreateForm" oncomplete="PF('ReleveCreateDialog').show()"/>
+                                        
+                                    </p:panelGrid>
                                     <br />
                                     <div class="panel-group" id="accordion">
-
+                                        <p:panel id="sovemavie2">
                                         <ui:repeat value="#{releveController.items}" var="relever">
 
                                             <div class="panel panel-default">
@@ -48,7 +50,7 @@
                                                 </div>
                                                 <div id="#{relever.idRelever}" class="panel-collapse collapse" style="height: 0px;">
                                                     <div class="panel-body">
-
+                                                    
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <!--    Hover Rows  -->
@@ -67,9 +69,11 @@
                                                                                         <th>dernier diplome</th>
                                                                                         <th>Date début</th>
                                                                                         <th>Date fin</th>
+                                                                                        <th>Actions</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
+                                                                                   
                                                                                     <ui:repeat value="#{relever.dossierprovisoirList}" var="dos_prov" >
                                                                                         <tr>
                                                                                             <td>#{dos_prov.nomComplet}</td>
@@ -78,10 +82,22 @@
                                                                                             <td>#{dos_prov.dernierDiplome}</td>
                                                                                             <td>#{dos_prov.dateDebut}</td>
                                                                                             <td>#{dos_prov.dateFin}</td>
+                                                                                            <td>
+                                                                                                
+                                                                                                <p:commandButton icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DossierprovisoirEditForm" oncomplete="PF('DossierprovisoirEditDialog').show()" actionListener="#{dossierprovisoirController.EditDossierProv(dos_prov)}" />
+                                                                                                <p:commandButton icon="ui-icon-trash"  value="#{bundle.Delete}"  update=":form1:sovemavie2, :growl" actionListener="#{dossierprovisoirController.destroy(dos_prov)}" >
+                                                                                                    <p:confirm header="Confirmation" message="voulez vous vraiment supprimer ce dossier?" icon="ui-icon-alert" />
+                                                                                                </p:commandButton>
+                                                                                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                                                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                                                                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                                                                                </p:confirmDialog>
+                                                                                                
+                                                                                            </td>
                                                                                         </tr>
 
                                                                                     </ui:repeat>
-
+                                                                                        
                                                                                 </tbody>
                                                                             </table>
                                                                         </div>
@@ -96,28 +112,35 @@
                                                                     <strong>Filière :</strong> #{relever.idFiliere.intitule} <br />
                                                                     <strong>Type de formation :</strong> #{relever.idFiliere.idType.nomType} <br />
                                                                     <strong>Département :</strong> #{relever.idFiliere.idDep.nomDep} <br />
-                                                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="Créer nouveau dossier" actionListener="#{dossierprovisoirController.prepareCreate}" update=":DossierprovisoirCreateForm" oncomplete="PF('DossierprovisoirCreateDialog').show()"/>
+                                                                    <p:commandButton icon="ui-icon-plus"   value="Créer nouveau dossier" update=":DossierprovisoirCreateForm" oncomplete="PF('DossierprovisoirCreateDialog').show()" actionListener="#{dossierprovisoirController.prepareCreate}"/>
+                                                                    <p:commandButton icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ReleveEditForm" oncomplete="PF('ReleveEditDialog').show()" actionListener="#{releveController.EditRelever(relever)}"/>
+                                                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{releveController.destroy}" update=":form1:sovemavie2, :growl" >
+                                                                        <p:confirm header="Confirmation" message="voulez vous vraiment supprimer ce relever ?" icon="ui-icon-alert" />
+                                                                    </p:commandButton> 
+                                                                    <p:commandButton action="#{releveController.printPdf(relever)}" value="PDF" ajax="false" onclick="this.form.target='_blank'" />
                                                                 </div>
 
                                                             </div>
 
                                                         </div>
                                                         <!-- End  Hover Rows  -->
-
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </ui:repeat>
-
+                                        </p:panel>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </h:form>
-                <ui:include src="../folder/releve/Create.xhtml" />
-                <ui:include src="../folder/dossierprovisoir/Create.xhtml" />
+                <ui:include src="CreateRelever.xhtml" />
+                <ui:include src="EditRelever.xhtml" />
+                <ui:include src="CreateDosProv.xhtml" />
+                <ui:include src="EditDosProv.xhtml" />
             </ui:define>
 
         </ui:composition>

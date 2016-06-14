@@ -1,9 +1,9 @@
 package beans;
 
 import model.Bordereaucomptable;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.BordereaucomptableFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.BordereaucomptableFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class BordereaucomptableController implements Serializable {
 
     @EJB
-    private session.BordereaucomptableFacade ejbFacade;
+    private sessions.BordereaucomptableFacade ejbFacade;
     private List<Bordereaucomptable> items = null;
     private Bordereaucomptable selected;
 

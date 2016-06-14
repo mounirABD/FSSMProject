@@ -1,9 +1,9 @@
 package beans;
 
 import model.Intervenant;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.IntervenantFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.IntervenantFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class IntervenantController implements Serializable {
 
     @EJB
-    private session.IntervenantFacade ejbFacade;
+    private sessions.IntervenantFacade ejbFacade;
     private List<Intervenant> items = null;
     private Intervenant selected;
 

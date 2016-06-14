@@ -1,9 +1,9 @@
 package beans;
 
 import model.Budget;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.BudgetFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.BudgetFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class BudgetController implements Serializable {
 
     @EJB
-    private session.BudgetFacade ejbFacade;
+    private sessions.BudgetFacade ejbFacade;
     private List<Budget> items = null;
     private Budget selected;
 

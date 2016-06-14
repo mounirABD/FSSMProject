@@ -1,9 +1,9 @@
 package beans;
 
 import model.Departement;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DepartementFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DepartementFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DepartementController implements Serializable {
 
     @EJB
-    private session.DepartementFacade ejbFacade;
+    private sessions.DepartementFacade ejbFacade;
     private List<Departement> items = null;
     private Departement selected;
 

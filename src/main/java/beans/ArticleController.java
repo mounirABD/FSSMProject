@@ -1,9 +1,9 @@
 package beans;
 
 import model.Article;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.ArticleFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.ArticleFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class ArticleController implements Serializable {
 
     @EJB
-    private session.ArticleFacade ejbFacade;
+    private sessions.ArticleFacade ejbFacade;
     private List<Article> items = null;
     private Article selected;
 

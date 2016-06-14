@@ -1,9 +1,9 @@
 package beans;
 
 import model.Boncommande;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.BoncommandeFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.BoncommandeFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class BoncommandeController implements Serializable {
 
     @EJB
-    private session.BoncommandeFacade ejbFacade;
+    private sessions.BoncommandeFacade ejbFacade;
     private List<Boncommande> items = null;
     private Boncommande selected;
 

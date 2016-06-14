@@ -1,9 +1,9 @@
 package beans;
 
 import model.Piecejustificativedeplacement;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.PiecejustificativedeplacementFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.PiecejustificativedeplacementFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class PiecejustificativedeplacementController implements Serializable {
 
     @EJB
-    private session.PiecejustificativedeplacementFacade ejbFacade;
+    private sessions.PiecejustificativedeplacementFacade ejbFacade;
     private List<Piecejustificativedeplacement> items = null;
     private Piecejustificativedeplacement selected;
 

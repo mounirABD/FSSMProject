@@ -1,9 +1,9 @@
 package beans;
 
 import model.Fournisseur;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.FournisseurFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.FournisseurFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class FournisseurController implements Serializable {
 
     @EJB
-    private session.FournisseurFacade ejbFacade;
+    private sessions.FournisseurFacade ejbFacade;
     private List<Fournisseur> items = null;
     private Fournisseur selected;
 

@@ -1,9 +1,9 @@
 package beans;
 
 import model.Dossiervacataire;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DossiervacataireFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DossiervacataireFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DossiervacataireController implements Serializable {
 
     @EJB
-    private session.DossiervacataireFacade ejbFacade;
+    private sessions.DossiervacataireFacade ejbFacade;
     private List<Dossiervacataire> items = null;
     private Dossiervacataire selected;
 

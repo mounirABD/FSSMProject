@@ -74,15 +74,12 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><h:outputLink class="menu-top-active" value="#{request.contextPath}/unite/index.xhtml">Acceuil</h:outputLink></li>
-<!--                            <li><a href="index.html">Accueil</a></li>
-                            <li><a href="ui.html">Relever</a></li>-->
-                            <li><h:outputLink value="#{request.contextPath}/unite/ProposerBC.xhtml">Proposer Engagement</h:outputLink></li>
-                            <li><h:outputLink value="#{request.contextPath}/unite/ConsulterEtatBC.xhtml">Consulter Etat Engagement</h:outputLink></li>
-                            <li><h:outputLink value="#{request.contextPath}/unite/relever.xhtml"></h:outputLink></li>
-                            <li><h:outputLink value="#{request.contextPath}/unite/relever.xhtml">Relever</h:outputLink></li>
-                            <li><h:outputLink value="#{request.contextPath}/unite/relever.xhtml">Relever</h:outputLink></li>
-                            <li><h:outputLink value="#{request.contextPath}/unite/relever.xhtml">Relever</h:outputLink></li>
+                            <li><h:outputLink class="#{activeClass1}"  value="#{request.contextPath}/unite/index.xhtml">Acceuil</h:outputLink></li>
+                            <!--   class="menu-top-active" -->
+                            <li><h:outputLink class="#{activeClass2}" value="#{request.contextPath}/unite/ProposerBC.xhtml">Proposer Engagement</h:outputLink></li>
+                            <li><h:outputLink class="#{activeClass3}" value="#{request.contextPath}/unite/ConsulterEtatBC.xhtml">Consulter Etat Engagement</h:outputLink></li>
+                            <li><h:outputLink class="#{activeClass4}" value="#{request.contextPath}/unite/relever.xhtml">Relever</h:outputLink></li>
+                            <li><h:outputLink class="#{activeClass5}" value="#{request.contextPath}/unite/relever.xhtml">Relever</h:outputLink></li>
 
                         </ul>
                     </div>

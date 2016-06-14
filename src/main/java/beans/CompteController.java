@@ -1,9 +1,9 @@
 package beans;
 
 import model.Compte;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.CompteFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.CompteFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class CompteController implements Serializable {
 
     @EJB
-    private session.CompteFacade ejbFacade;
+    private sessions.CompteFacade ejbFacade;
     private List<Compte> items = null;
     private Compte selected;
 

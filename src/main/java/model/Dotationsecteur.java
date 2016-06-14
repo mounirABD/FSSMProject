@@ -49,13 +49,11 @@ public class Dotationsecteur implements Serializable {
     @Column(name = "reliquat")
     private Integer reliquat;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
-    private List<Indemntekm> indemntekmList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
     private List<Dossiervacataire> dossiervacataireList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
     private List<Boncommande> boncommandeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
-    private List<Indemnetedeplacementetranger> indemnetedeplacementetrangerList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotationSect", fetch = FetchType.EAGER)
+    private List<Deplacement> deplacementList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
     private List<Dossierhsupp> dossierhsuppList;
     @JoinColumn(name = "idCompte", referencedColumnName = "idCompte")
@@ -64,8 +62,6 @@ public class Dotationsecteur implements Serializable {
     @JoinColumn(name = "idSecteur", referencedColumnName = "idSecteur")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Secteur idSecteur;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDotation", fetch = FetchType.EAGER)
-    private List<Indemnetedeplacementinterne> indemnetedeplacementinterneList;
 
     public Dotationsecteur() {
     }
@@ -99,15 +95,6 @@ public class Dotationsecteur implements Serializable {
     }
 
     @XmlTransient
-    public List<Indemntekm> getIndemntekmList() {
-        return indemntekmList;
-    }
-
-    public void setIndemntekmList(List<Indemntekm> indemntekmList) {
-        this.indemntekmList = indemntekmList;
-    }
-
-    @XmlTransient
     public List<Dossiervacataire> getDossiervacataireList() {
         return dossiervacataireList;
     }
@@ -126,12 +113,12 @@ public class Dotationsecteur implements Serializable {
     }
 
     @XmlTransient
-    public List<Indemnetedeplacementetranger> getIndemnetedeplacementetrangerList() {
-        return indemnetedeplacementetrangerList;
+    public List<Deplacement> getDeplacementList() {
+        return deplacementList;
     }
 
-    public void setIndemnetedeplacementetrangerList(List<Indemnetedeplacementetranger> indemnetedeplacementetrangerList) {
-        this.indemnetedeplacementetrangerList = indemnetedeplacementetrangerList;
+    public void setDeplacementList(List<Deplacement> deplacementList) {
+        this.deplacementList = deplacementList;
     }
 
     @XmlTransient
@@ -157,15 +144,6 @@ public class Dotationsecteur implements Serializable {
 
     public void setIdSecteur(Secteur idSecteur) {
         this.idSecteur = idSecteur;
-    }
-
-    @XmlTransient
-    public List<Indemnetedeplacementinterne> getIndemnetedeplacementinterneList() {
-        return indemnetedeplacementinterneList;
-    }
-
-    public void setIndemnetedeplacementinterneList(List<Indemnetedeplacementinterne> indemnetedeplacementinterneList) {
-        this.indemnetedeplacementinterneList = indemnetedeplacementinterneList;
     }
 
     @Override

@@ -1,9 +1,9 @@
 package beans;
 
 import model.Typeformations;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.TypeformationsFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.TypeformationsFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class TypeformationsController implements Serializable {
 
     @EJB
-    private session.TypeformationsFacade ejbFacade;
+    private sessions.TypeformationsFacade ejbFacade;
     private List<Typeformations> items = null;
     private Typeformations selected;
 

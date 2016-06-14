@@ -1,9 +1,9 @@
 package beans;
 
 import model.Prixkilomitrique;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.PrixkilomitriqueFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.PrixkilomitriqueFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class PrixkilomitriqueController implements Serializable {
 
     @EJB
-    private session.PrixkilomitriqueFacade ejbFacade;
+    private sessions.PrixkilomitriqueFacade ejbFacade;
     private List<Prixkilomitrique> items = null;
     private Prixkilomitrique selected;
 

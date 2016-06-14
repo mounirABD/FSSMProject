@@ -1,9 +1,9 @@
 package beans;
 
 import model.Prixsejour;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.PrixsejourFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.PrixsejourFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class PrixsejourController implements Serializable {
 
     @EJB
-    private session.PrixsejourFacade ejbFacade;
+    private sessions.PrixsejourFacade ejbFacade;
     private List<Prixsejour> items = null;
     private Prixsejour selected;
 

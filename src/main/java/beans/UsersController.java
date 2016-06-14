@@ -1,9 +1,9 @@
 package beans;
 
 import model.Users;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.UsersFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.UsersFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class UsersController implements Serializable {
 
     @EJB
-    private session.UsersFacade ejbFacade;
+    private sessions.UsersFacade ejbFacade;
     private List<Users> items = null;
     private Users selected;
 

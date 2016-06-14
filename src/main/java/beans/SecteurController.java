@@ -1,9 +1,9 @@
 package beans;
 
 import model.Secteur;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.SecteurFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.SecteurFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class SecteurController implements Serializable {
 
     @EJB
-    private session.SecteurFacade ejbFacade;
+    private sessions.SecteurFacade ejbFacade;
     private List<Secteur> items = null;
     private Secteur selected;
 

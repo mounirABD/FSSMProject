@@ -1,9 +1,9 @@
 package beans;
 
 import model.Role;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.RoleFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.RoleFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class RoleController implements Serializable {
 
     @EJB
-    private session.RoleFacade ejbFacade;
+    private sessions.RoleFacade ejbFacade;
     private List<Role> items = null;
     private Role selected;
 

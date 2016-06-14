@@ -1,9 +1,9 @@
 package beans;
 
 import model.Graddiplome;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.GraddiplomeFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.GraddiplomeFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class GraddiplomeController implements Serializable {
 
     @EJB
-    private session.GraddiplomeFacade ejbFacade;
+    private sessions.GraddiplomeFacade ejbFacade;
     private List<Graddiplome> items = null;
     private Graddiplome selected;
 

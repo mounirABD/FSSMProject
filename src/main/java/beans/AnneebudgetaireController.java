@@ -1,9 +1,9 @@
 package beans;
 
 import model.Anneebudgetaire;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.AnneebudgetaireFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.AnneebudgetaireFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class AnneebudgetaireController implements Serializable {
 
     @EJB
-    private session.AnneebudgetaireFacade ejbFacade;
+    private sessions.AnneebudgetaireFacade ejbFacade;
     private List<Anneebudgetaire> items = null;
     private Anneebudgetaire selected;
 

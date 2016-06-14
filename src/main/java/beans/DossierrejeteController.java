@@ -1,9 +1,9 @@
 package beans;
 
 import model.Dossierrejete;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DossierrejeteFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DossierrejeteFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DossierrejeteController implements Serializable {
 
     @EJB
-    private session.DossierrejeteFacade ejbFacade;
+    private sessions.DossierrejeteFacade ejbFacade;
     private List<Dossierrejete> items = null;
     private Dossierrejete selected;
 

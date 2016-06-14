@@ -1,9 +1,9 @@
 package beans;
 
 import model.Bordereauautorisation;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.BordereauautorisationFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.BordereauautorisationFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class BordereauautorisationController implements Serializable {
 
     @EJB
-    private session.BordereauautorisationFacade ejbFacade;
+    private sessions.BordereauautorisationFacade ejbFacade;
     private List<Bordereauautorisation> items = null;
     private Bordereauautorisation selected;
 

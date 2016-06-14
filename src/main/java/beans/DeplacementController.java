@@ -1,9 +1,9 @@
 package beans;
 
 import model.Deplacement;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DeplacementFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DeplacementFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DeplacementController implements Serializable {
 
     @EJB
-    private session.DeplacementFacade ejbFacade;
+    private sessions.DeplacementFacade ejbFacade;
     private List<Deplacement> items = null;
     private Deplacement selected;
 

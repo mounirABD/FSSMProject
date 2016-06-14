@@ -24,6 +24,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -47,7 +48,19 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Deplacement.findByStatutMnt", query = "SELECT d FROM Deplacement d WHERE d.statutMnt = :statutMnt"),
     @NamedQuery(name = "Deplacement.findByIndice", query = "SELECT d FROM Deplacement d WHERE d.indice = :indice"),
     @NamedQuery(name = "Deplacement.findByEchelle", query = "SELECT d FROM Deplacement d WHERE d.echelle = :echelle"),
-    @NamedQuery(name = "Deplacement.findByGrade", query = "SELECT d FROM Deplacement d WHERE d.grade = :grade")})
+    @NamedQuery(name = "Deplacement.findByGrade", query = "SELECT d FROM Deplacement d WHERE d.grade = :grade"),
+    @NamedQuery(name = "Deplacement.findByEtat", query = "SELECT d FROM Deplacement d WHERE d.etat = :etat"),
+    @NamedQuery(name = "Deplacement.findByObservation", query = "SELECT d FROM Deplacement d WHERE d.observation = :observation"),
+    @NamedQuery(name = "Deplacement.findByDateEtat", query = "SELECT d FROM Deplacement d WHERE d.dateEtat = :dateEtat"),
+    @NamedQuery(name = "Deplacement.findByDatePiece", query = "SELECT d FROM Deplacement d WHERE d.datePiece = :datePiece"),
+    @NamedQuery(name = "Deplacement.findByIntutilePiece", query = "SELECT d FROM Deplacement d WHERE d.intutilePiece = :intutilePiece"),
+    @NamedQuery(name = "Deplacement.findByKmRoute", query = "SELECT d FROM Deplacement d WHERE d.kmRoute = :kmRoute"),
+    @NamedQuery(name = "Deplacement.findByKmPiste", query = "SELECT d FROM Deplacement d WHERE d.kmPiste = :kmPiste"),
+    @NamedQuery(name = "Deplacement.findByMntkm", query = "SELECT d FROM Deplacement d WHERE d.mntkm = :mntkm"),
+    @NamedQuery(name = "Deplacement.findByMarque", query = "SELECT d FROM Deplacement d WHERE d.marque = :marque"),
+    @NamedQuery(name = "Deplacement.findByPuissance", query = "SELECT d FROM Deplacement d WHERE d.puissance = :puissance"),
+    @NamedQuery(name = "Deplacement.findByMontantDepExt", query = "SELECT d FROM Deplacement d WHERE d.montantDepExt = :montantDepExt"),
+    @NamedQuery(name = "Deplacement.findByTypedep", query = "SELECT d FROM Deplacement d WHERE d.typedep = :typedep")})
 public class Deplacement implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -81,31 +94,61 @@ public class Deplacement implements Serializable {
     @Size(max = 254)
     @Column(name = "grade")
     private String grade;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deplacement", fetch = FetchType.EAGER)
-    private List<Indemntekm> indemntekmList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deplacement", fetch = FetchType.EAGER)
-    private List<Indemnetedeplacementetranger> indemnetedeplacementetrangerList;
+    @Size(max = 255)
+    @Column(name = "etat")
+    private String etat;
+    @Size(max = 255)
+    @Column(name = "observation")
+    private String observation;
+    @Column(name = "dateEtat")
+    @Temporal(TemporalType.DATE)
+    private Date dateEtat;
+    @Column(name = "datePiece")
+    @Temporal(TemporalType.DATE)
+    private Date datePiece;
+    @Size(max = 255)
+    @Column(name = "intutilePiece")
+    private String intutilePiece;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "kmRoute")
+    private Double kmRoute;
+    @Column(name = "kmPiste")
+    private Double kmPiste;
+    @Column(name = "mntkm")
+    private Double mntkm;
+    @Size(max = 255)
+    @Column(name = "marque")
+    private String marque;
+    @Column(name = "puissance")
+    private Integer puissance;
+    @Column(name = "montantDepExt")
+    private Double montantDepExt;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "typedep")
+    private int typedep;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDeplacement", fetch = FetchType.EAGER)
     private List<Piecejustificativedeplacement> piecejustificativedeplacementList;
-    @JoinColumn(name = "idPays", referencedColumnName = "idPays")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Pays idPays;
+    @JoinColumn(name = "idDotationSect", referencedColumnName = "idDotation")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Dotationsecteur idDotationSect;
     @JoinColumn(name = "cinPpr", referencedColumnName = "cinPpr")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Intervenant cinPpr;
     @JoinColumn(name = "idUser", referencedColumnName = "idUser")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Users idUser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDeplacement", fetch = FetchType.EAGER)
-    private List<Etatdossier> etatdossierList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deplacement", fetch = FetchType.EAGER)
-    private List<Indemnetedeplacementinterne> indemnetedeplacementinterneList;
 
     public Deplacement() {
     }
 
     public Deplacement(Integer idDeplacement) {
         this.idDeplacement = idDeplacement;
+    }
+
+    public Deplacement(Integer idDeplacement, int typedep) {
+        this.idDeplacement = idDeplacement;
+        this.typedep = typedep;
     }
 
     public Integer getIdDeplacement() {
@@ -196,22 +239,100 @@ public class Deplacement implements Serializable {
         this.grade = grade;
     }
 
-    @XmlTransient
-    public List<Indemntekm> getIndemntekmList() {
-        return indemntekmList;
+    public String getEtat() {
+        return etat;
     }
 
-    public void setIndemntekmList(List<Indemntekm> indemntekmList) {
-        this.indemntekmList = indemntekmList;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
-    @XmlTransient
-    public List<Indemnetedeplacementetranger> getIndemnetedeplacementetrangerList() {
-        return indemnetedeplacementetrangerList;
+    public String getObservation() {
+        return observation;
     }
 
-    public void setIndemnetedeplacementetrangerList(List<Indemnetedeplacementetranger> indemnetedeplacementetrangerList) {
-        this.indemnetedeplacementetrangerList = indemnetedeplacementetrangerList;
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
+
+    public Date getDateEtat() {
+        return dateEtat;
+    }
+
+    public void setDateEtat(Date dateEtat) {
+        this.dateEtat = dateEtat;
+    }
+
+    public Date getDatePiece() {
+        return datePiece;
+    }
+
+    public void setDatePiece(Date datePiece) {
+        this.datePiece = datePiece;
+    }
+
+    public String getIntutilePiece() {
+        return intutilePiece;
+    }
+
+    public void setIntutilePiece(String intutilePiece) {
+        this.intutilePiece = intutilePiece;
+    }
+
+    public Double getKmRoute() {
+        return kmRoute;
+    }
+
+    public void setKmRoute(Double kmRoute) {
+        this.kmRoute = kmRoute;
+    }
+
+    public Double getKmPiste() {
+        return kmPiste;
+    }
+
+    public void setKmPiste(Double kmPiste) {
+        this.kmPiste = kmPiste;
+    }
+
+    public Double getMntkm() {
+        return mntkm;
+    }
+
+    public void setMntkm(Double mntkm) {
+        this.mntkm = mntkm;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public Integer getPuissance() {
+        return puissance;
+    }
+
+    public void setPuissance(Integer puissance) {
+        this.puissance = puissance;
+    }
+
+    public Double getMontantDepExt() {
+        return montantDepExt;
+    }
+
+    public void setMontantDepExt(Double montantDepExt) {
+        this.montantDepExt = montantDepExt;
+    }
+
+    public int getTypedep() {
+        return typedep;
+    }
+
+    public void setTypedep(int typedep) {
+        this.typedep = typedep;
     }
 
     @XmlTransient
@@ -223,12 +344,12 @@ public class Deplacement implements Serializable {
         this.piecejustificativedeplacementList = piecejustificativedeplacementList;
     }
 
-    public Pays getIdPays() {
-        return idPays;
+    public Dotationsecteur getIdDotationSect() {
+        return idDotationSect;
     }
 
-    public void setIdPays(Pays idPays) {
-        this.idPays = idPays;
+    public void setIdDotationSect(Dotationsecteur idDotationSect) {
+        this.idDotationSect = idDotationSect;
     }
 
     public Intervenant getCinPpr() {
@@ -245,24 +366,6 @@ public class Deplacement implements Serializable {
 
     public void setIdUser(Users idUser) {
         this.idUser = idUser;
-    }
-
-    @XmlTransient
-    public List<Etatdossier> getEtatdossierList() {
-        return etatdossierList;
-    }
-
-    public void setEtatdossierList(List<Etatdossier> etatdossierList) {
-        this.etatdossierList = etatdossierList;
-    }
-
-    @XmlTransient
-    public List<Indemnetedeplacementinterne> getIndemnetedeplacementinterneList() {
-        return indemnetedeplacementinterneList;
-    }
-
-    public void setIndemnetedeplacementinterneList(List<Indemnetedeplacementinterne> indemnetedeplacementinterneList) {
-        this.indemnetedeplacementinterneList = indemnetedeplacementinterneList;
     }
 
     @Override

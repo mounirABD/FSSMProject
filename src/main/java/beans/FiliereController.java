@@ -1,9 +1,9 @@
 package beans;
 
 import model.Filiere;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.FiliereFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.FiliereFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class FiliereController implements Serializable {
 
     @EJB
-    private session.FiliereFacade ejbFacade;
+    private sessions.FiliereFacade ejbFacade;
     private List<Filiere> items = null;
     private Filiere selected;
 

@@ -1,9 +1,9 @@
 package beans;
 
 import model.Detail;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.DetailFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.DetailFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class DetailController implements Serializable {
 
     @EJB
-    private session.DetailFacade ejbFacade;
+    private sessions.DetailFacade ejbFacade;
     private List<Detail> items = null;
     private Detail selected;
 

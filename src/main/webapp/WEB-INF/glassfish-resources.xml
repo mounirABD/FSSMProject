@@ -7,5 +7,5 @@
         <property name="Password" value=""/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/embeddedDS" pool-name="embeddedConnPool"/>
-    <jdbc-resource enabled="true" jndi-name="java:app/DSEntities" object-type="user" pool-name="embeddedConnPool"/>
+<!--    <jdbc-resource enabled="true" jndi-name="java:app/DSEntities" object-type="user" pool-name="embeddedConnPool"/>-->
 </resources>

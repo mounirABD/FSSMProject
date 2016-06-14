@@ -1,9 +1,9 @@
 package beans;
 
 import model.Lignecommande;
-import dao.util.JsfUtil;
-import dao.util.JsfUtil.PersistAction;
-import session.LignecommandeFacade;
+import beans.util.JsfUtil;
+import beans.util.JsfUtil.PersistAction;
+import sessions.LignecommandeFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class LignecommandeController implements Serializable {
 
     @EJB
-    private session.LignecommandeFacade ejbFacade;
+    private sessions.LignecommandeFacade ejbFacade;
     private List<Lignecommande> items = null;
     private Lignecommande selected;
 
