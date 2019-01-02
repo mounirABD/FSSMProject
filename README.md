@@ -1,4 +1,4 @@
-# Application Web gestion financière a la faculté des sciences Semlalya (FSSM) université Cadi Aayad.
+# Application Web de gestion de service financière de la faculté des sciences Semlalya (FSSM) université Cadi Aayad.
 
 Cette application web est faite pour permettre la gestion des services financière à la faculté des sciences Semlalia.
 
